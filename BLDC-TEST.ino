@@ -12,13 +12,6 @@ const int DIR_R = 10;  // Direction for right motors
 const int BRAKE_R = 11;  // Brake for right motors
 const int STOP_R = 12;  // Stop for right motors
 
-// const int SPEED_PULSE_IN = 2;
-// unsigned long pulse_time = 0; // Time of last pulse
-// unsigned long pulse_period = 0; // Period of pulse in microseconds
-// unsigned int pulse_frequency = 0; // Pulse frequency in Hz
-// volatile int pulse_rpm = 0; // RPM of motor
-
-
 
 boolean motorStopped = false;  // Track if motor is stopped
 boolean systemHalted = false;  // Flag to track if the system is halted
@@ -44,13 +37,6 @@ void setup() {
   pinMode(BRAKE_R, OUTPUT);
   pinMode(STOP_R, OUTPUT);
 
-//   pinMode(SPEED_PULSE_IN, INPUT_PULLUP);
-
-// // Set up interrupt to capture speed pulse
-//   attachInterrupt(digitalPinToInterrupt(SPEED_PULSE_IN), pulse_captured, RISING);
-
-  // TCCR0A = (1 << WGM00) | (1 << WGM01); // Set to Fast PWM
-  // TCCR0B = (1 << CS01); // Prescaler set to 8 (gives ~3.9 kHz with 16 MHz clock)
 
   digitalWrite(PWM_L, LOW);   // Set PWM to 0 (no speed)
   digitalWrite(PWM_R, LOW);   // Set PWM to 0 (no speed)
@@ -163,19 +149,6 @@ void loop() {
   }
   // bluetooth.println(pulse_rpm);
 }
-
-// void pulse_captured() {
-// // Calculate pulse period in microseconds
-// pulse_period = micros() - pulse_time;
-// pulse_time = micros();
-
-// // Calculate pulse frequency in Hz
-// pulse_frequency = 1000000 / pulse_period;
-
-// // Calculate motor RPM
-// pulse_rpm = pulse_frequency / 2;
-// }
-
 
 
 // Function to stop the motor (apply brakes)
